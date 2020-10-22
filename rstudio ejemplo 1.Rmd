@@ -1,0 +1,161 @@
+```{r}
+lista_edad <- sample(100,100)
+
+x <- 17
+edad<-lista_edad[66]
+
+if(edad>x){print("Esta personas es mayor de edad")}else{print("Esta persona es menor de edad")}
+```
+CLASE 3 FUNDAMENTOS DE R SEGUNDA PARTE
+
+```{r}
+mi_primera_funcion <- function(){print("ya se hacer mi primera función")}
+
+mi_primera_funcion()
+```
+
+
+```{r}
+getwd()
+
+list.files()
+list.dirs()
+
+list.files(path = ".", pattern = "png")
+
+```
+
+
+```{r}
+getwd()
+setwd("C:/Users/juan.monsalve/Documents/EJEMPLO R")
+
+
+```
+
+
+```{r}
+mi_vector <- (1:12)
+
+print(mi_vector)
+
+mi_matriz <- matrix(1:12, nrow = 3, ncol = 4)
+
+print(mi_matriz)
+
+vector_1 <- 1:4
+vector_2 <- 5:8
+vector_3 <- 9:12
+vector_4 <- 13:16
+
+matriz_por_fila <- rbind(vector_1, vector_2,vector_3,vector_4)
+matriz_por_columna <- cbind(vector_1,vector_2,vector_3,vector_4)
+
+print(matriz_por_fila)
+print(matriz_por_columna)
+
+
+```
+
+
+```{r}
+
+matriz_por_columna + 1
+
+matriz_final <- (matriz_por_columna)
+
+matriz_final * 5
+
+matriz_final * 2
+
+matriz_final / 10
+
+
+```
+
+
+```{r}
+mi_df <- data.frame("entero" = 1:4, "factores" = c("a","b","c","d"),
+```
+
+
+```{r}
+iris [1,]
+iris [,1]
+
+```
+
+
+```{r}
+
+head (iris)
+tail(iris)
+
+summary(iris)
+
+iris$sepal.length
+iris$sepal.length>6
+iris[iris$sepal.length>6]
+
+names(iris)
+
+str(iris)
+```
+
+
+```{r}
+
+library(tidyverse)
+
+glimpse(iris)
+
+iris%>%
+  glimpse()
+
+```
+
+#GRAFICAR
+```{r}
+
+iris%>%
+  ggplot(aes(Sepal.Length, fill=Species))+
+  geom_histogram()+
+  facet_wrap(~Species, scales = "free")
+  labs(title="DATOS LARGO DEL SEPALO")
+
+
+```
+
+
+```{r}
+
+iris %>%
+  group_by(Species)%>%
+  summarise(promedio=mean(Sepal.Length),
+            mediana=median(Sepal.Length),
+            p25=quantile(Sepal.Length)[2],
+            p75=quantile(Sepal.Length)[4])%>%
+ggplot(aes(mediana,Species,color=Species))+
+geom_point(show.legend = FALSE, aes(size=mediana))+geom_errorbar(aes(xmin=p25,xmax=p75),show.legend = FALSE,linetype="dashed")+labs(title = "distribución de las especies segun el cuartil")
+  
+  
+  
+```
+
+
+```{r}
+
+boxplot(iris)
+abline()
+
+```
+
+
+```{r}
+install.packages("skimr")
+library(skimr)
+```
+
+
+```{r}
+)
